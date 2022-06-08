@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# DMM WEBCAMPコンテンツ【アプリケーションを作成しよう】
+
+DMM WEBCAMPの学習コンテンツアプリケーションを作成しようの研修課題です。
+
+## 使い方
+
+ruby on railsで作成したため、ブラウザ上で使用可能です
