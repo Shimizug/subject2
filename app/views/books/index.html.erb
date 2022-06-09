@@ -2,11 +2,14 @@
 
 <h1>投稿一覧</h1>
 
-<%= @books.each do |book| %>
+<% @books.each do |book| %>
 
   <p>タイトル</p>
-  <span><%= .title %></span>
-  
+  <span>
+    <!--showページへのリンク-->
+    <%= link_to book.title, 'book_path(book.id)' %>
+  </span>
+
 <% end %>
 
 <!-- form_with部分 -->
@@ -19,3 +22,4 @@
 	
   <%= f.submit '投稿' %>
 <% end %>
+
