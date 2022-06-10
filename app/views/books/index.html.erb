@@ -1,25 +1,49 @@
-<h1>新規投稿</h1>
-
-<h1>投稿一覧</h1>
-
+<h1>books</h1>
+<!--フォームに送信され、データベースに保存されたデータの一覧を表示する画面を作成-->
+<table>
+  <thead>
+		<tr>
+			<th>Title</th>
+			<th>Body</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
+	<tbody>
+	  <!--インスタンス変数books(Book.all)内の要素をeachメソッドで順番に取り出す。-->
 <% @books.each do |book| %>
-
-  <p>タイトル</p>
-  <span>
-    <!--showページへのリンク-->
-    <%= link_to book.title, 'book_path(book.id)' %>
-  </span>
-
+    <tr>
+  <!--保存されたtitleカラムのデータを順に出す-->
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
+      <!--Showというテキストを表示させShowをおせば各詳細ページに飛ぶ-->
+      <!--変数展開でidを文字列内に記載できるようにしている-->
+      <td><%= link_to 'Show', "/books/#{book.id}" %></td>
+      <td>Edit</td>
+      <td>Destroy</td>
+    </tr>
 <% end %>
+  </tbody>
+</table>
 
-<!-- form_with部分 -->
+
+  
+
+
+
+
+
+
+<h2>New book</h2>
+
+<!-- 投稿フォーム -->
+<!--フォームヘルパーを使用、モデルオプションにインスタンス変数bookを指定-->
 <%= form_with model: @book do |f| %>
-  <h4>タイトル</h4>
+  <h4>Title</h4>
+  <!--Bookモデルの情報がブロック変数に踏まれているため、プロパティにtitleを指定することで、railsがBookモデルのtitleと指定できる。-->
   <%= f.text_field :title %>
-	
-  <h4>本文</h4>
+	 <h4>Body</h4>
   <%= f.text_area :body %>
 	
-  <%= f.submit '投稿' %>
+  <%= f.submit 'Create Book' %>
 <% end %>
 
