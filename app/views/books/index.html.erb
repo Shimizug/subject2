@@ -1,4 +1,4 @@
-<h1>books</h1>
+<h1>Books</h1>
 <!--フォームに送信され、データベースに保存されたデータの一覧を表示する画面を作成-->
 <table>
   <thead>
@@ -18,8 +18,8 @@
       <!--Showというテキストを表示させShowをおせば各詳細ページに飛ぶ-->
       <!--変数展開でidを文字列内に記載できるようにしている-->
       <td><%= link_to 'Show', "/books/#{book.id}" %></td>
-      <td><%= link_to 'Edit', "/books/#{book.id}" %></td>
-      <td>Destroy</td>
+      <td><%= link_to 'Edit', "/books/#{book.id}/edit" %></td>
+      <td><%= link_to 'Destroy', "/books/#{book.id}", method: :delete, "data-confirm" => "Are you sure?" %></td>
     </tr>
 <% end %>
   </tbody>

@@ -1,6 +1,12 @@
-<h2>Title</h2>
+<p><strong>Title:</strong>
 <!--findメソッドを用いてユーザーから指定されたレコードを格納したインスタンス変数books内のtitleカラムを指定-->
-<p><%= @book.title %></p>
+<%= @book.title %></p>
 
-<h2>body</h2>
-<p><%= @book.body %></p>
+<p><strong>Body:</strong>
+<%= @book.body %></p>
+
+<p>
+<%= link_to 'Edit', "/books/#{@book.id}/edit" %>
+|
+<%= link_to 'Back', "/books" %>
+</p>
