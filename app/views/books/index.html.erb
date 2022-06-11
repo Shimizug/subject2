@@ -25,17 +25,18 @@
   </tbody>
 </table>
 
-
-  
-
-
-
-
-
-
 <h2>New book</h2>
 
-<!-- 投稿フォーム -->
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited book from being saved:
+  <ul>
+    <h2>
+    <% @book.errors.full_messages.each do |message| %>
+    </h2>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <!--フォームヘルパーを使用、モデルオプションにインスタンス変数bookを指定-->
 <%= form_with model: @book do |f| %>
   <h4>Title</h4>
@@ -44,6 +45,6 @@
 	 <h4>Body</h4>
   <%= f.text_area :body %>
 	
-  <%= f.submit 'Create Book' %>
+  <p><%= f.submit 'Create Book' %></p>
 <% end %>
 

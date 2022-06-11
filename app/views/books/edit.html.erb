@@ -1,4 +1,14 @@
 <h1>Editing Book</h1>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited book from being saved:
+  <ul>
+    <h2>
+    <% @book.errors.full_messages.each do |message| %>
+    </h2>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <!--更新機能のためのform_withヘルパー、urlに更新の情報を送信-->
 <%= form_with model: @book, url: "/books/#{@book.id}", method: :patch do|f| %>
 
@@ -9,7 +19,7 @@
   <%= f.text_area :body %>
   
   <p><%= f.submit 'Update Book' %></p>
-  <p><%= link_to "Show", "books/#{@book.id}"  %>
+  <p><%= link_to "Show", "/books/#{@book.id}"  %>
   |
   <%= link_to "Back", "/books" %>
   </p>

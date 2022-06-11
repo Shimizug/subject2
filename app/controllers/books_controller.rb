@@ -9,12 +9,17 @@ class BooksController < ApplicationController
   
   def create
     # 下記で抽出したデータをBookモデルのnewメソッドの引数に指定し新しいインスタンスを作成。
-    # 画面に表示しないためローカル変数に
-    book = Book.new(book_params)
+    @book = Book.new(book_params)
     # 上述のローカル変数book内のBookモデルのインスタンスをここでデータベースに保存
-    book.save
-    # 処理の最後に画面を遷移　
-    redirect_to "/books/#{book.id}"
+    # バリデーションの設定、saveメソッドに成功すれば詳細ページに飛ぶように
+    if @book.save
+    # 成功したら画面を遷移　
+      redirect_to "/books/#{@book.id}", notice: 'Book was successfully created.'
+    # 失敗したらもう一度index画面を表示
+    else 
+      @books = Book.all
+      render :index
+    end
   end
 
   def show
@@ -29,15 +34,18 @@ class BooksController < ApplicationController
   
   def update  
     # ローカル変数bookにparamsが受け取ったIDをもとにfindメソッドを用いて取得したレコードを代入)
-    book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to "books/#{book.id}"
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to "/books/#{@book.id}", notice: 'Book was successfully updated.'
+    else
+      render :edit
+    end
   end
   
   def destroy
     book = Book.find(params[:id])
-    book.destroy(book_params)
-    redirect_to "/books"
+    book.destroy
+    redirect_to "/books",  notice: 'Book was successfully destroyed.'
   end
   
   private
