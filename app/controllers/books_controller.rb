@@ -14,7 +14,7 @@ class BooksController < ApplicationController
     # 上述のローカル変数book内のBookモデルのインスタンスをここでデータベースに保存
     book.save
     # 処理の最後に画面を遷移　
-    redirect_to 'books/#{book.id}'
+    redirect_to "/books/#{book.id}"
   end
 
   def show
@@ -23,9 +23,15 @@ class BooksController < ApplicationController
   end
 
   def edit
+    # paramsが受け取ったIDのレコード情報をfindメソッドを用いてBookモデルと紐づいたテーブルから取得
+    @book = Book.find(params[:id])
   end
   
   def update  
+    # ローカル変数bookにparamsが受け取ったIDをもとにfindメソッドを用いて取得したレコードを代入)
+    book = Book.find(params[:id])
+    book.update(book_params)
+    redirect_to "books/#{book.id}"
   end
   
   def destroy

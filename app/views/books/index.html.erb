@@ -18,7 +18,7 @@
       <!--Showというテキストを表示させShowをおせば各詳細ページに飛ぶ-->
       <!--変数展開でidを文字列内に記載できるようにしている-->
       <td><%= link_to 'Show', "/books/#{book.id}" %></td>
-      <td>Edit</td>
+      <td><%= link_to 'Edit', "/books/#{book.id}" %></td>
       <td>Destroy</td>
     </tr>
 <% end %>
