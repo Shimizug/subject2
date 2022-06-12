@@ -19,14 +19,13 @@
   box-sizing: border-box;
 }
 
-html{
-  margin: 0;
-}
+
 
 body{
   font-family: verdana, arial, helvetica, sans-serif;
-  margin: 33px;
-  
+  margin: 33px 33px 0;
+  padding: 0;
+
 }
 
 p{
@@ -34,13 +33,76 @@ p{
   text-align: justify;
   font-size: 13px;
   line-height: 1.5em;
-  margin:33px;
+  margin: 0 33px;
+}
+
+.top-text{
+  margin: 33px;
 }
 
 h1{
   font-size: 26px;
+  margin: 0;
 }
 
 a{
   color: #666666;
+}
+
+table{
+  padding: 1px 5px 7px;
+  font-size: 13px;
+}
+
+th{
+  padding: 1px 1px 5px;
+}
+
+td{
+  padding: 1px 5px 7px;
+}
+
+.field{
+  margin: 0 0 10px
+}
+
+.book-title{
+  margin: 0;
+  padding: 1px 2px;
+  font-size: 13px;
+}
+
+.book-body{
+  margin: 0;
+  padding: 2px;
+  font-size:13px;
+}
+
+.book-submit{
+  margin: 0;
+  padding: 1px 6px;
+}
+
+.button{
+  font-size: 13px;
+  margin: 0;
+}
+
+.update{
+  margin: 0;
+  padding: 1px 6px;
+}
+
+.show{
+  margin: 33px;
+}
+
+.error{
+  border-color: red;
+  color: #000;
+}
+
+.error-box{
+  padding: 7px 7px 0;
+  margin: 0 0 20px;
 }
